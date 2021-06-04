@@ -1,0 +1,87 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.button {
+    color: white;
+    height: 3rem;
+    width: 8rem;
+    border-radius: 500px;
+    border: none;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    background-size: 200%;
+    background-position: left;
+    transition-duration: .5s;
+}
+
+.button:hover {
+    background-position: right;
+    cursor: pointer;
+}
+
+.buttons-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.configuration, .generate {
+    text-align: center;
+    margin-top: 1vh;
+}
+
+.box {
+    border: rgb(99, 98, 98);
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 2vh;
+    border-radius: 40px;
+    height: 3rem;
+    
+    min-width: 50rem;
+    /* max-width: 10rem; */
+    display: inline-block;
+}
+
+.password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+/* Specifics */
+
+.button.configure {
+    height: 2.5rem;
+    width: 6rem;
+    background: none;
+    border-radius: 500px;
+    background-color: rgb(85, 85, 85);
+}
+
+.button.configure:hover {
+    background-color: grey;
+}
