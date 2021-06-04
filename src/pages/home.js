@@ -50,8 +50,8 @@ const PassGenApp = () => {
     const [passwd, setPassword] = React.useState('');
     const [state, setState] = React.useState({uppercase: true, digits: true, symbols: true});
     const [length, setLength] = React.useState(16);
-    
-    
+
+
     const handleChange = (event) => {
         setState({
             ...state,
@@ -60,7 +60,8 @@ const PassGenApp = () => {
     };
     const handleSlide = (event, newValue) => {
         setLength(newValue);
-    };    
+    };
+
     const PrettoSlider = withStyles({
         root: {
             color: '#6A53FF',
@@ -154,11 +155,30 @@ const PassGenApp = () => {
 
     function handleClose() {
         setOpen(false);
+        handleClick();
     };
 
     function handleClick() {
-        var charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+?,.<>".split("");
-        var passList = []
+        var lowercase = "abcdefghijklmnopqrstuvwxyz";
+        var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var digits = "1234567890";
+        var symbols = "!@#$%^&*()_+?,.<>";
+        var charList = [];
+        var passList = [];
+        charList.push(lowercase);
+        if (state.uppercase === true) {
+            charList.push(uppercase);
+        }
+
+        if (state.digits === true) {
+            charList.push(digits);
+        }
+
+        if (state.symbols === true) {
+            charList.push(symbols);
+        }
+
+        charList = charList.join('').split('');
         for (var x = 0; x < length; x++) {
             passList.push(charList[secureRandom(charList.length)])
         }
@@ -215,10 +235,8 @@ const PassGenApp = () => {
                 <DialogContent dividers>
                     <Typography gutterBottom>
                         <FormControl component="fieldset">
-
                             <FormLabel component="legend">Complexity</FormLabel>
                             <FormGroup>
-
                                 <FormControlLabel control={<Switch
                                         checked={
 state.uppercase}
@@ -243,7 +261,10 @@ state.symbols}
                             </FormGroup>
                             <FormLabel component="legend">Length</FormLabel>
                             <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider"
-                                min={8} defaultValue={length} max={128} onChangeCommitted={handleSlide}/>
+                                min={8}
+                                defaultValue={length}
+                                max={128}
+                                onChangeCommitted={handleSlide}/>
                         </FormControl>
                     </Typography>
                 </DialogContent>
